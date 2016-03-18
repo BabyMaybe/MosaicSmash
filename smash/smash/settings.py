@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from settings_local import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,11 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
+# ### ### ### ### ### ### ### ### ###
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+@zun3l@r+8)%gan%iv12*#9ho#*pk8gv$za(f-gw0$k9ov2nd'
-
+# SECRET_KEY = '+@zun3l@r+8)%gan%iv12*#9ho#*pk8gv$za(f-gw0$k9ov2nd'
+# MOVED TO LOCAL SETTINGS ###
+#
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+# MOVED TO LOCAL SETTINGS ### ### ###
+# ### ### ### ### ### ### ### ### ###
 
 ALLOWED_HOSTS = []
 
@@ -71,17 +76,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smash.wsgi.application'
 
-
+# ### ### ### ### ### ### ### ### ###
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+# MOVED TO LOCAL SETTINGS
+# ### ### ### ### ### ### ### ### ###
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
