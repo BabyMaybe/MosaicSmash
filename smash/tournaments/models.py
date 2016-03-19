@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+
+from django.utils import timezone
 # Create your models here.
 
 
@@ -15,7 +17,7 @@ class Player(models.Model):
         return self.nickname
 
     user = models.OneToOneField(User)
-    icon = models.ImageField(upload_to='icons/player', null=True, blank=True)
+    icon = models.ImageField(upload_to='player_icons', null=True, blank=True)
     nickname = models.CharField(max_length=200)
 
 
@@ -29,7 +31,7 @@ class Character(models.Model):
         return self.name
 
     name = models.CharField(max_length=200)
-    icon = models.ImageField(upload_to='icons/characters', null=True, blank=True)
+    icon = models.ImageField(upload_to='char_icons', null=True, blank=True)
 
 
 class Tournament(models.Model):
@@ -39,12 +41,13 @@ class Tournament(models.Model):
         verbose_name_plural = "Tournaments"
 
     def __str__(self):
-        pass
+        return self.name
 
-    date_started = models.DateTimeField(auto_now_add=True)
-    date_ended = models.DateTimeField(auto_now_add=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    date_started = models.DateField(default=timezone.now)
+    date_ended = models.DateField(null=True, blank=True)
     preliminary = models.BooleanField(default=False)
-    winner = models.ForeignKey(Player)
+    winner = models.ForeignKey(Player, null=True, blank=True)
 
 
 class Match(models.Model):
@@ -53,8 +56,6 @@ class Match(models.Model):
         verbose_name = "Match"
         verbose_name_plural = "Matches"
 
-    def __str__(self):
-        pass
     #Choices for team battles
     STOCK = "Stock"
     TIME = "Time"
@@ -114,21 +115,19 @@ class Match(models.Model):
         (44,'Yoshi\'s Island'),
         )
 
-    date_played = models.DateTimeField(auto_now_add=True)
+    date_played = models.DateTimeField(default=timezone.now)
     tournament = models.ForeignKey(Tournament)
     teams = models.BooleanField(default=False)
-    match_type = models.CharField(max_length=100, default=STOCK)
-    stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default=9) #9 sets default stage to Final Destination
-                                                               #I just didnt want to make 45 constants :(
+    match_type = models.CharField(max_length=100, choices=MATCH_TYPE, default=STOCK)
+    time_length = models.IntegerField(default=3)
+    stage = models.IntegerField(choices=STAGE_CHOICES, default=9) #9 sets default stage to Final Destination
+                                                                  #I just didnt want to make 45 constants :(
 
 class MatchEntry(models.Model):
 
     class Meta:
         verbose_name = "Match Entry"
         verbose_name_plural = "Match Entries"
-
-    def __str__(self):
-        pass
 
     #Choices for team battles
     SOLO = 0
