@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -32,34 +32,19 @@ class Character(models.Model):
     icon = models.ImageField(upload_to='icons/characters', null=True, blank=True)
 
 
-class MatchEntry(models.Model):
+class Tournament(models.Model):
 
     class Meta:
-        verbose_name = "Match Entry"
-        verbose_name_plural = "Match Entries"
+        verbose_name = "Tournament"
+        verbose_name_plural = "Tournaments"
 
     def __str__(self):
         pass
 
-    #Choices for team battles
-    SOLO = 0
-    TEAM1 = 1
-    TEAM2 = 2
-    TEAM3 = 3
-    TEAM_CHOICES = (
-        (SOLO, "Free For All"),
-        (TEAM1, "Team 1"),
-        (TEAM2, "Team 2"),
-        (TEAM3, "Team 3")
-        )
-
-    match = models.ForeignKey(Match)
-    player = models.ForeignKey(Player)
-    character = models.ForeignKey(Character)
-    team = models.IntegerField(choices=TEAM_CHOICES, default=SOLO)
-    kos = models.IntegerField(default=0)
-    falls = models.IntegerField(default=0)
-    winner = models.BooleanField(default=False)
+    date_started = models.DateTimeField(auto_now_add=True)
+    date_ended = models.DateTimeField(auto_now_add=False)
+    preliminary = models.BooleanField(default=False)
+    winner = models.ForeignKey(Player)
 
 
 class Match(models.Model):
@@ -132,22 +117,38 @@ class Match(models.Model):
     date_played = models.DateTimeField(auto_now_add=True)
     tournament = models.ForeignKey(Tournament)
     teams = models.BooleanField(default=False)
-    match_type = models.CharField(default=STOCK)
-    stage = models.CharField(choices=STAGE_CHOICES, default=9) #9 sets default stage to Final Destination
+    match_type = models.CharField(max_length=100, default=STOCK)
+    stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default=9) #9 sets default stage to Final Destination
                                                                #I just didnt want to make 45 constants :(
 
-
-class Tournament(models.Model):
+class MatchEntry(models.Model):
 
     class Meta:
-        verbose_name = "Tournament"
-        verbose_name_plural = "Tournaments"
+        verbose_name = "Match Entry"
+        verbose_name_plural = "Match Entries"
 
     def __str__(self):
         pass
 
-    date_started = models.DateTimeField(auto_now_add=True)
-    date_ended = models.DateTimeField(auto_now_add=False)
-    preliminary = models.BooleanField(default=False)
-    winner = models.ForeignKey(Player)
+    #Choices for team battles
+    SOLO = 0
+    TEAM1 = 1
+    TEAM2 = 2
+    TEAM3 = 3
+    TEAM_CHOICES = (
+        (SOLO, "Free For All"),
+        (TEAM1, "Team 1"),
+        (TEAM2, "Team 2"),
+        (TEAM3, "Team 3")
+        )
+
+    match = models.ForeignKey(Match)
+    player = models.ForeignKey(Player)
+    character = models.ForeignKey(Character)
+    team = models.IntegerField(choices=TEAM_CHOICES, default=SOLO)
+    kos = models.IntegerField(default=0)
+    falls = models.IntegerField(default=0)
+    winner = models.BooleanField(default=False)
+
+
 
