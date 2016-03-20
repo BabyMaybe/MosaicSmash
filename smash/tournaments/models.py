@@ -135,7 +135,7 @@ class MatchEntry(models.Model):
     TEAM2 = 2
     TEAM3 = 3
     TEAM_CHOICES = (
-        (SOLO, "Free For All"),
+        (SOLO, "Solo"),
         (TEAM1, "Team 1"),
         (TEAM2, "Team 2"),
         (TEAM3, "Team 3")

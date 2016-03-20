@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald|Fugaz+One|Squada+One|Black+Ops+One|Contrail+One|Wallpoet);
+h1, h2 {
+  font-family: "Black Ops One";
+  font-size: 6em;
+  text-align: center;
+  color: #002745;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  margin-top: 40px; }
+
+h2 {
+  font-size: 4em; }
+
+#line {
+  height: 8px;
+  width: 95%;
+  background-color: #002745;
+  margin: 0 auto; }
+
+.round {
+  font-size: .5em;
+  margin: 40px; }
+
+header {
+  width: 100%; }
+
+ul {
+  list-style-type: none; }
+
+li {
+  display: inline;
+  background-color: #D95A24;
+  font-family: "Oswald";
+  font-size: 1.5em;
+  color: white;
+  padding: 20px;
+  margin: 20px; }
+
+table {
+  background-color: #D95A24;
+  font-family: "Oswald";
+  font-size: 1.5em;
+  color: white;
+  margin: 0 auto;
+  width: 90%;
+  border-spacing: 0; }
+  table tr:nth-child(even) {
+    background-color: #e4845b; }
+  table td, table th {
+    text-align: center;
+    line-height: 1.6em; }
+  table td {
+    margin: auto;
+    font-family: "Contrail One"; }
+  table th {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 7px solid white; }
+
+.win {
+  background-image: url("smash-ball-small.png");
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto; }
+
+.titles {
+  width: 100%;
+  margin: auto; }
+
+/*# sourceMappingURL=results.css.map */

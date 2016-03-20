@@ -1,0 +1,71 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href={% static 'tournaments/css/results.css' %} />
+{%  endblock %}
+
+
+{% block content %}
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="round">Round 1 </span>
+        Preliminary Round
+        <span class="round">Round 1 </span>
+
+    </h2>
+
+</header>
+
+<div id="line"></div>
+
+<table>
+    <tr id="col_names">
+        <th> Player </th>
+        <th> Character </th>
+        <th> Team </th>
+        <th> KOs </th>
+        <th> Falls </th>
+        <th> Winner </th>
+    </tr>
+    <tr class="results">
+        <td class="player"> Senpai </td>
+        <td class="char"> Ness </td>
+        <td class="team"> Team 1 </td>
+        <td class="ko"> 5 </td>
+        <td class="falls"> 3 </td>
+        <td class="winner"> <div class="win"></div> </td>
+    </tr>
+    <tr class="results">
+        <td class="player"> CPU </td>
+        <td class="char"> Zero Suit Samus </td>
+        <td class="team"> Team 2 </td>
+        <td class="ko"> 3 </td>
+        <td class="falls"> 2 </td>
+        <td class="winner"> </td>
+    </tr>
+        <tr class="results">
+        <td class="player"> Senpai </td>
+        <td class="char"> Ness </td>
+        <td class="team"> Team 1 </td>
+        <td class="ko"> 5 </td>
+        <td class="falls"> 3 </td>
+        <td class="winner"> <div class="win"></div> </td>
+    </tr>
+    <tr class="results">
+        <td class="player"> CPU </td>
+        <td class="char"> Zero Suit Samus </td>
+        <td class="team"> Team 2 </td>
+        <td class="ko"> 3 </td>
+        <td class="falls"> 2 </td>
+        <td class="winner"> </td>
+    </tr>
+</table>
+{%  endblock %}
+
+
+{% block javascript %}
+
+{% endblock %}
