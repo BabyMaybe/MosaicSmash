@@ -1,0 +1,63 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/tournaments.css' %} />
+{%  endblock %}
+
+
+{% block content %}
+<h1>MATCHES!!!</h1>
+<div class='line'></div>
+
+
+<table>
+    <tr id='col_names'>
+        <th> Round </th>
+        <th> Date Played </th>
+        <th> Stage </th>
+        <th> Teams </th>
+        <th> Match Type </th>
+        <th> Time Length </th>
+        <th> Winner </th>
+    </tr>
+{% for match in matches %}
+    <tr class='clickable-row'  data-href='full row! {{ match.pk }}'>
+        <td class='tournament-round'>
+            {{ match.name }}
+        </td>
+        <td class='played'>
+            {{ match.date_played }}
+        </td>
+        <td class='stage'>
+            {{ match.stage }}
+        </td>
+        <td class='teams'>
+            {{ match.teams }}
+        </td>
+        <td class='type'>
+            {{ match.match_type }}
+        </td>
+        <td class='length'>
+            {{ match.time_length }}
+        </td>
+        <td class='winner'>
+            {{ match.winner.nickname }}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<div class='line'></div>
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript">
+    $(".clickable-row").click(function() {
+    {# window.document.location = $(this).data("href"); #}
+    console.log('pk:' + $(this).data("href"));
+    });
+</script>
+{% endblock %}

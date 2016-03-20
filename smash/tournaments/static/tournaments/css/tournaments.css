@@ -74,28 +74,16 @@ table {
   background-color: #002745;
   margin: 0 auto; }
 
-.round {
-  color: #666;
-  font-size: .5em;
-  margin: 40px; }
-
-.win {
-  background-image: url("media/smash-ball-small.png");
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  margin: 0 auto; }
-
 .background-image {
-  background-image: url("media/bg_imgs/bg3.jpg");
-  background-position-y: 10%;
-  -webkit-filter: blur(7px);
+  background-image: url("media/bg_imgs/bg2.jpg");
+  background-position-y: 5%;
+  -webkit-filter: blur(1px);
   /* Chrome, Safari */
-  -ms-filter: blur(7px);
+  -ms-filter: blur(1px);
   /* IE12? */
-  filter: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="7" /></filter></svg>#blur');
+  filter: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="1" /></filter></svg>#blur');
   /* Firefox, Safari, Chrome*/
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
 
-/*# sourceMappingURL=results.css.map */
+/*# sourceMappingURL=tournaments.css.map */

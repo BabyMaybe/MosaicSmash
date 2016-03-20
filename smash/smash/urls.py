@@ -20,5 +20,8 @@ from tournaments import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'results/', views.ResultsView.as_view())
+    url(r'^$', views.TournamentsView.as_view()),
+    url(r'^results/(?P<pk>[0-9]+)', views.ResultsView.as_view()),
+    url(r'^tournaments/(?P<pk>[0-9]+)', views.MatchesView.as_view()),
+    url(r'^tournaments/', views.TournamentsView.as_view()),
 ]

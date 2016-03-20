@@ -1,0 +1,53 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/tournaments.css' %} />
+{%  endblock %}
+
+
+{% block content %}
+<h1>TOURNAMENTS!!!</h1>
+<div class='line'></div>
+
+<table>
+    <tr id='col_names'>
+        <th> Tournament </th>
+        <th> Date Started </th>
+        <th> Date Ended </th>
+        <th> Preliminary </th>
+        <th> Winner </th>
+    </tr>
+{% for tournament in tournament_list %}
+    <tr class='clickable-row'  data-href='/tournaments/{{ tournament.pk }}'>
+        <td class='tournament'>
+            {{ tournament.name }}
+        </td>
+        <td class='start'>
+            {{ tournament.date_started }}
+        </td>
+        <td class='end'>
+            {{ tournament.date_ended }}
+        </td>
+        <td class='prelim'>
+            {{ tournament.preliminary }}
+        </td>
+        <td class='winner'>
+            {{ tournament.winner.nickname }}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<div class='line'></div>
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript">
+    $(".clickable-row").click(function() {
+    window.document.location = $(this).data("href");
+    });
+</script>
+{% endblock %}

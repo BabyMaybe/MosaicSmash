@@ -31,38 +31,20 @@
         <th> Falls </th>
         <th> Winner </th>
     </tr>
+    {% for result in results %}
     <tr class="results">
-        <td class="player"> Senpai </td>
-        <td class="char"> Ness </td>
-        <td class="team"> Team 1 </td>
-        <td class="ko"> 5 </td>
-        <td class="falls"> 3 </td>
-        <td class="winner"> <div class="win"></div> </td>
+        <td class="player"> {{ result.player.nickname }} </td>
+        <td class="char"> {{ result.character }} </td>
+        <td class="team"> {{ result.team }} </td>
+        <td class="ko"> {{ result.kos }} </td>
+        <td class="falls"> {{ result.falls }} </td>
+        <td class="winner">
+            {% if result.winner %}
+            <div class="win"></div>
+            {% endif %}
+        </td>
     </tr>
-    <tr class="results">
-        <td class="player"> CPU </td>
-        <td class="char"> Zero Suit Samus </td>
-        <td class="team"> Team 2 </td>
-        <td class="ko"> 3 </td>
-        <td class="falls"> 2 </td>
-        <td class="winner"> </td>
-    </tr>
-        <tr class="results">
-        <td class="player"> Senpai </td>
-        <td class="char"> Ness </td>
-        <td class="team"> Team 1 </td>
-        <td class="ko"> 5 </td>
-        <td class="falls"> 3 </td>
-        <td class="winner"> <div class="win"></div> </td>
-    </tr>
-    <tr class="results">
-        <td class="player"> CPU </td>
-        <td class="char"> Zero Suit Samus </td>
-        <td class="team"> Team 2 </td>
-        <td class="ko"> 3 </td>
-        <td class="falls"> 2 </td>
-        <td class="winner"> </td>
-    </tr>
+    {% endfor %}
 </table>
 <div class="line"></div>
 {%  endblock %}
