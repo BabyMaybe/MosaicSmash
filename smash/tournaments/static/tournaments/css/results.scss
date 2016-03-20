@@ -1,84 +1,10 @@
 @import "base";
 
-h1, h2 {
-    font-family: $HeaderFont;
-    font-size: 6em;
-    text-align: center;
-    color: $MBlue;
-    margin: 0;
-    padding: 0;
-}
 
-h1 {
-    margin-top: 40px;
-}
-
-h2 {
-    font-size: 4em;
-
-}
-
-#line {
-    height: 8px;
-    width: 95%;
-    background-color: $MBlue;
-    margin: 0 auto;
-}
 .round {
+    color: $MGrey;
     font-size: .5em;
     margin: 40px;
-}
-
-header {
-    width: 100%;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    display: inline;
-    background-color: $MOrange;
-    font-family: $BodyFont;
-    font-size: 1.5em;
-    color: white;
-    padding: 20px;
-    margin: 20px;
-}
-
-table {
-    background-color: $MOrange;
-    font-family: $BodyFont;
-    font-size: 1.5em;
-    color: white;
-    margin: 0 auto;
-    width: 90%;
-    border-spacing: 0;
-
-    tr:nth-child(even) {
-        background-color: lighten($MOrange, 13%);
-    }
-    td,th {
-        // border: 3px solid white;
-        text-align: center;
-            line-height: 1.6em;
-    }
-
-    td {
-        margin: auto;
-        font-family: $TableFont;
-    }
-
-    th {
-        font-size: 1.5em;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        border-bottom: 7px solid white;
-        }
-
-    tr {
-       }
 }
 
 .win {
@@ -87,10 +13,4 @@ table {
     width: 30px;
     height: 30px;
     margin: 0 auto;
-
-}
-
-.titles {
-    width: 100%;
-    margin: auto;
 }
