@@ -1,0 +1,43 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/profile.css' %} />
+
+{%  endblock %}
+
+
+{% block content %}
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash!
+    </h1>
+    <h2>
+        <span class="side-header"> {{ player.nickname }} </span>
+        Profile
+        <span class="side-header"> {{ player.nickname }} </span>
+    </h2>
+</header>
+<div class="line"></div>
+
+<div class="profile-bg">
+    <ul>
+        <li> Total Wins: {{wins}} </li>
+        <li> Total Losses: {{losses}} </li>
+        <li> Total KOs: {{kos}} </li>
+        <li> Total Falls: {{falls}} </li>
+        <li> Tournaments Won: {{tournaments_won}} </li>
+        <li> Join Date: {{joined}} </li>
+        <li> Last Played: {{last_match}} </li>
+    </ul>
+</div>
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type='text/javascript'>
+
+</script>
+{% endblock %}

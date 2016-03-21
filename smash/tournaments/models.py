@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import Sum
 from django.contrib.auth.models import User
 
 from django.utils import timezone
 # Create your models here.
-
 
 class Player(models.Model):
 
@@ -19,6 +19,19 @@ class Player(models.Model):
     user = models.OneToOneField(User)
     icon = models.ImageField(upload_to='player_icons', null=True, blank=True)
     nickname = models.CharField(max_length=200)
+    kos = models.IntegerField(default=0)
+    falls = models.IntegerField(default=0)
+    wins = models.IntegerField(default=0)
+    losses = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if MatchEntry.objects.filter(player=self):
+            self.kos = MatchEntry.objects.filter(player=self).aggregate(kos=Sum('kos'))['kos']
+            self.falls = MatchEntry.objects.filter(player=self).aggregate(falls=Sum('falls'))['falls']
+            self.wins = MatchEntry.objects.filter(player=self).filter(winner=True).count()
+            self.losses = MatchEntry.objects.filter(player=self).filter(winner=False).count()
+        super(Player, self).save(*args, **kwargs)
+
 
 
 class Character(models.Model):
@@ -56,6 +69,9 @@ class Match(models.Model):
         verbose_name = "Match"
         verbose_name_plural = "Matches"
 
+    def __str__(self):
+        return self.name
+
     #Choices for team battles
     STOCK = "Stock"
     TIME = "Time"
@@ -85,7 +101,7 @@ class Match(models.Model):
         ('Gaur Plains', 'Gaur Plains'),
         ('Halberd', 'Halberd'),
         ('Jungle Hijinxs', 'Jungle Hijinxs'),
-        ('Kalos Pokémon League', 'Kalos Pokémon League'),
+        ('Kalos Pokemon League', 'Kalos Pokemon League'),
         ('Kongo Jungle 64', 'Kongo Jungle 64'),
         ('Luigi\'s Mansion', 'Luigi\'s Mansion'),
         ('Lylat Cruise', 'Lylat Cruise'),
@@ -98,7 +114,7 @@ class Match(models.Model):
         ('Pac-Land', 'Pac-Land'),
         ('Palutena\'s Temple', 'Palutena\'s Temple'),
         ('Pilot Wings', 'Pilot Wings'),
-        ('Pokémon Stadium 2', 'Pokémon Stadium 2'),
+        ('Pokemon Stadium 2', 'Pokemon Stadium 2'),
         ('Port Town Aero Dive', 'Port Town Aero Dive'),
         ('Pyrosphere', 'Pyrosphere'),
         ('Skyloft', 'Skyloft'),
@@ -116,14 +132,22 @@ class Match(models.Model):
         ('Yoshi\'s Island', 'Yoshi\'s Island'),
         )
 
-    name = models.CharField(max_length=200, default="Round 0")
+    name = models.CharField(max_length=200)
     date_played = models.DateTimeField(default=timezone.now)
     tournament = models.ForeignKey(Tournament)
     teams = models.BooleanField(default=False)
     match_type = models.CharField(max_length=100, choices=MATCH_TYPE, default=STOCK)
     time_length = models.IntegerField(default=3)
-    stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default="Final Destination") #9 sets default stage to Final Destination
-    winner = models.ForeignKey(Player, null=True, blank=True)                                                              #I just didnt want to make 45 constants :(
+    stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default="Final Destination")
+    winner = models.ForeignKey(Player, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            round = 'Round '
+            round_no = self.tournament.match_set.count()
+            print (round_no)
+            self.name = round + str(round_no)
+        super(Match, self).save(*args, **kwargs)
 
 class MatchEntry(models.Model):
 
@@ -150,6 +174,8 @@ class MatchEntry(models.Model):
     kos = models.IntegerField(default=0)
     falls = models.IntegerField(default=0)
     winner = models.BooleanField(default=False)
+
+
 
 
 

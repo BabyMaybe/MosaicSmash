@@ -3,14 +3,27 @@
 
 
 {% block head %}
-<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/tournaments.css' %} />
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/match.css' %} />
 {%  endblock %}
 
 
 {% block content %}
-<h1>MATCHES!!!</h1>
-<div class='line'></div>
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+        Match Results
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+    </h2>
+</header>
 
+<div class='line'></div>
 
 <table>
     <tr id='col_names'>
@@ -23,7 +36,7 @@
         <th> Winner </th>
     </tr>
 {% for match in matches %}
-    <tr class='clickable-row'  data-href='full row! {{ match.pk }}'>
+    <tr class='clickable-row'  data-href='/results/{{ match.pk }}'>
         <td class='tournament-round'>
             {{ match.name }}
         </td>
@@ -40,7 +53,9 @@
             {{ match.match_type }}
         </td>
         <td class='length'>
-            {{ match.time_length }}
+            {% if match.match_type == "Time" %}
+                {{ match.time_length }}
+            {% endif %}
         </td>
         <td class='winner'>
             {{ match.winner.nickname }}
@@ -56,8 +71,7 @@
 {% block javascript %}
 <script type="text/javascript">
     $(".clickable-row").click(function() {
-    {# window.document.location = $(this).data("href"); #}
-    console.log('pk:' + $(this).data("href"));
+    window.document.location = $(this).data("href");
     });
 </script>
 {% endblock %}

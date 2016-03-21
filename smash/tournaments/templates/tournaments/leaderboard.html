@@ -1,0 +1,55 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/leaderboard.css' %} />
+{%  endblock %}
+
+
+{% block content %}
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="side-header">
+            <a href="/tournaments"> Tournaments </a>
+        </span>
+        Leaderboard
+        <span class="side-header">
+            <a href="/tournaments"> Tournaments </a>
+        </span>
+    </h2>
+</header>
+
+<div class="line"></div>
+
+<table>
+    <tr id="col_names">
+        <th> Player </th>
+        <th> KOs </th>
+        <th> Falls </th>
+        <th> Wins </th>
+        <th> Losses </th>
+    </tr>
+    {% for player in players %}
+    <tr class="results">
+        <td class="player"> {{ player.nickname }} </td>
+        <td class="ko"> {{ player.kos }} </td>
+        <td class="falls"> {{ player.falls }} </td>
+        <td class="wins"> {{ player.wins }} </td>
+        <td class="losses"> {{ player.losses }} </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type='text/javascript'>
+
+</script>
+{% endblock %}

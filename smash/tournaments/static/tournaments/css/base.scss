@@ -16,6 +16,12 @@ body {
     @include blur(9);
 }
 
+.side-header {
+    color: $MGrey;
+    font-size: .5em;
+    margin: 40px;
+}
+
 h1, h2 {
     font-family: $HeaderFont;
     font-size: 6em;
@@ -38,13 +44,13 @@ ul {
 }
 
 li {
-    display: inline;
+
     background-color: $MOrange;
     font-family: $BodyFont;
     font-size: 1.5em;
     color: white;
     padding: 20px;
-    margin: 20px;
+    margin: 0 auto;
 }
 
 table {
@@ -74,10 +80,20 @@ table {
         padding-bottom: 10px;
         padding-top: 10px;
         border-bottom: 7px solid white;
+
         }
 
     tr {
+        cursor: pointer;
+        &:hover {
+            color: $MBlue;
+        }
        }
+
+    #col_names {
+        cursor: auto;
+        color: white;
+    }
 }
 
 .line {
@@ -85,4 +101,12 @@ table {
     width: 100%;
     background-color: $MBlue;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: $MGrey;
+    &:hover {
+        color: $MOrange;
+    }
 }

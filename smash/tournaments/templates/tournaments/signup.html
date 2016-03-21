@@ -1,0 +1,32 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href={% static 'tournaments/css/signup.css' %} />
+
+{%  endblock %}
+
+{% block content %}
+<h1> Signup Page </h1>
+
+<div class="newpost">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="submit" class="submit" >  </input>
+    </form>
+</div>
+<br>
+<a href="/login/"> <h3>login<h3> </a>
+<hr>
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type='text/javascript'>
+
+</script>
+{% endblock %}
