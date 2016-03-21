@@ -91,6 +91,14 @@ a {
   a:hover {
     color: #D95A24; }
 
+.signup {
+  display: block;
+  font-family: "Black Ops One";
+  font-size: 2em;
+  color: #002745; }
+  .signup:hover {
+    color: #D95A24; }
+
 .background-image {
   background-image: url("media/bg_imgs/bg6.jpg");
   background-position-y: 20%;
@@ -102,5 +110,10 @@ a {
   /* Firefox, Safari, Chrome*/
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
+
+table a {
+  color: white; }
+  table a:hover {
+    color: #002745; }
 
 /*# sourceMappingURL=leaderboard.css.map */

@@ -91,6 +91,14 @@ a {
   a:hover {
     color: #D95A24; }
 
+.signup {
+  display: block;
+  font-family: "Black Ops One";
+  font-size: 2em;
+  color: #002745; }
+  .signup:hover {
+    color: #D95A24; }
+
 .background-image {
   background-image: url("media/bg_imgs/bg1.jpg");
   background-position-y: 18%;
@@ -102,5 +110,49 @@ a {
   /* Firefox, Safari, Chrome*/
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
+
+.newpost {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  color: #D95A24;
+  width: 80%;
+  font-family: "Oswald"; }
+
+input {
+  display: block;
+  margin: auto;
+  width: 30%;
+  background-color: white;
+  padding: 5px;
+  border: solid 3px #D95A24;
+  text-align: center;
+  color: #002745;
+  font-size: 1em;
+  font-family: "Oswald"; }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fbede7 inset !important; }
+
+label {
+  display: block;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  color: #666; }
+
+.helptext {
+  display: none; }
+
+.submit {
+  margin-top: 20px;
+  width: 32%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  font-family: "Contrail One";
+  font-size: 2em;
+  color: #D95A24; }
+  .submit:hover {
+    color: #002745; }
 
 /*# sourceMappingURL=signup.css.map */

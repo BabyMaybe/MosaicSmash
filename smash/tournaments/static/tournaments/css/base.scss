@@ -110,3 +110,16 @@ a {
         color: $MOrange;
     }
 }
+
+.signup {
+    display: block;
+    font-family: $HeaderFont;
+    font-size: 2em;
+    color: $MBlue;
+    text-align: center;
+
+    &:hover {
+        color: $MOrange;
+    }
+
+}

@@ -9,8 +9,21 @@
 {%  endblock %}
 
 {% block content %}
-<h1> Signup Page </h1>
-
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="side-header">
+            <a href="/leaderboards"> Leaderboards </a>
+        </span>
+        Signup
+        <span class="side-header">
+            <a href="/leaderboards"> Leaderboards </a>
+        </span>
+    </h2>
+</header>
+<div class="line"> </div>
 <div class="newpost">
     <form action="" method="post">
         {% csrf_token %}
@@ -18,9 +31,7 @@
         <input type="submit" value="submit" class="submit" >  </input>
     </form>
 </div>
-<br>
-<a href="/login/"> <h3>login<h3> </a>
-<hr>
+
 
 {%  endblock %}
 

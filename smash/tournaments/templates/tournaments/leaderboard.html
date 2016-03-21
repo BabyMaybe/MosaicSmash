@@ -21,6 +21,7 @@
             <a href="/tournaments"> Tournaments </a>
         </span>
     </h2>
+    <a href="/signup" class="signup"> Signup </a>
 </header>
 
 <div class="line"></div>
@@ -35,7 +36,7 @@
     </tr>
     {% for player in players %}
     <tr class="results">
-        <td class="player"> {{ player.nickname }} </td>
+        <td class="player"> <a href="/profile/{{player.pk}}"> {{ player.nickname }} </a></td>
         <td class="ko"> {{ player.kos }} </td>
         <td class="falls"> {{ player.falls }} </td>
         <td class="wins"> {{ player.wins }} </td>

@@ -10,7 +10,8 @@ class SignupForm(ModelForm):
         model = User
         fields = ['first_name','last_name','username','password','email']
         help_texts = {
-            'username' : 'Name to use in tournament',
+            'username' : None,
+            'password' : None,
         }
         widgets = {
             'password' : PasswordInput(),

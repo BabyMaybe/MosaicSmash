@@ -91,4 +91,13 @@ a {
   a:hover {
     color: #D95A24; }
 
+.signup {
+  display: block;
+  font-family: "Black Ops One";
+  font-size: 2em;
+  color: #002745;
+  text-align: center; }
+  .signup:hover {
+    color: #D95A24; }
+
 /*# sourceMappingURL=base.css.map */
