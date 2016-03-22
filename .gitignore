@@ -111,5 +111,5 @@ Thumbs.db
 
 #Django specific #
 ##################
-smash/settings_local.py
+settings_local.py
 /media/*

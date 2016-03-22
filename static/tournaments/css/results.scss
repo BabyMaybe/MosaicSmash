@@ -1,0 +1,14 @@
+@import "base";
+.win {
+    background-image: url('media/smash-ball-small.png');
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.background-image {
+    background-image: url('media/bg_imgs/bg3.jpg');
+    background-position-y: 10%;
+    @include blur(7);
+}

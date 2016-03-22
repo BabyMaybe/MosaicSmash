@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald|Fugaz+One|Squada+One|Black+Ops+One|Contrail+One|Wallpoet);
+body {
+  width: 100%;
+  margin: 0; }
+
+.background-image {
+  height: 450px;
+  width: 100%;
+  background-image: url("http://wiimedia.ign.com/wii/image/article/113/1138536/super-smash-bros-brawl-20101203052409267-000.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 90%;
+  -webkit-filter: blur(9px);
+  /* Chrome, Safari */
+  -ms-filter: blur(9px);
+  /* IE12? */
+  filter: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="9" /></filter></svg>#blur');
+  /* Firefox, Safari, Chrome*/
+  filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
+  /* IE9 */ }
+
+h1, h2 {
+  font-family: "Black Ops One";
+  font-size: 6em;
+  text-align: center;
+  color: #002745;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  margin-top: 40px; }
+
+h2 {
+  font-size: 4em; }
+
+ul {
+  list-style-type: none; }
+
+li {
+  display: inline;
+  background-color: #D95A24;
+  font-family: "Oswald";
+  font-size: 1.5em;
+  color: white;
+  padding: 20px;
+  margin: 20px; }
+
+table {
+  background-color: #D95A24;
+  font-family: "Oswald";
+  font-size: 1.5em;
+  color: white;
+  margin: 0 auto;
+  width: 100%;
+  border-spacing: 0; }
+  table tr:nth-child(even) {
+    background-color: #e4845b; }
+  table td, table th {
+    text-align: center;
+    line-height: 1.6em; }
+  table td {
+    margin: auto;
+    font-family: "Contrail One"; }
+  table th {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 7px solid white; }
+
+.line {
+  height: 8px;
+  width: 100%;
+  background-color: #002745;
+  margin: 0 auto; }
+
+.round {
+  color: #666;
+  font-size: .5em;
+  margin: 40px; }
+
+.win {
+  background-image: url("media/smash-ball-small.png");
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto; }
+
+.background-image {
+  background-image: url("media/bg_imgs/bg3.jpg");
+  background-position-y: 10%;
+  -webkit-filter: blur(7px);
+  /* Chrome, Safari */
+  -ms-filter: blur(7px);
+  /* IE12? */
+  filter: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="7" /></filter></svg>#blur');
+  /* Firefox, Safari, Chrome*/
+  filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
+  /* IE9 */ }
+
+/*# sourceMappingURL=results.css.map */
