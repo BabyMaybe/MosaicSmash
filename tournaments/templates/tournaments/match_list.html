@@ -32,7 +32,7 @@
         <th> Stage </th>
         <th> Teams </th>
         <th> Match Type </th>
-        <th> Time Length </th>
+        <th> Rules </th>
         <th> Winner </th>
     </tr>
 {% for match in matches %}
@@ -47,14 +47,21 @@
             {{ match.stage }}
         </td>
         <td class='teams'>
-            {{ match.teams }}
+            {% if match.teams %}
+		✓
+	    {% else %}
+		✘
+	    {% endif %}
         </td>
         <td class='type'>
             {{ match.match_type }}
         </td>
-        <td class='length'>
+        <td class='rules'>
+	    {{ match.time_length }}
             {% if match.match_type == "Time" %}
-                {{ match.time_length }}
+                Minutes
+	    {% else %}
+		Lives
             {% endif %}
         </td>
         <td class='winner'>
