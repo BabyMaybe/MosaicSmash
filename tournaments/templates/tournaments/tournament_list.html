@@ -40,7 +40,11 @@
             {{ tournament.date_ended }}
         </td>
         <td class='prelim'>
-            {{ tournament.preliminary }}
+            {% if tournament.preliminary %}
+		✓
+	    {% else %}
+		✘
+	    {% endif %}
         </td>
         <td class='winner'>
             {{ tournament.winner.nickname }}
