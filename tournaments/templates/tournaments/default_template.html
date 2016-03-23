@@ -3,12 +3,26 @@
 
 
 {% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/CUSTOM_PAGE_CSS.css' %} />
 
 {%  endblock %}
 
 
 {% block content %}
-
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+        Match Results
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+    </h2>
+</header>
 {%  endblock %}
 
 

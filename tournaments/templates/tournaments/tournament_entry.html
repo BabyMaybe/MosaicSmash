@@ -1,0 +1,62 @@
+{% extends 'tournaments/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel='stylesheet' type='text/css' href={% static 'tournaments/css/dataentry.css' %} />
+
+{%  endblock %}
+
+
+{% block content %}
+<header>
+    <h1 class="smash_head">
+        Mosaic Smash
+    </h1>
+    <h2>
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+        Data Entry
+        <span class="side-header">
+            <a href="/tournaments"> {{ tournament.name }} </a>
+        </span>
+    </h2>
+</header>
+
+<form method="post" action="">
+    <table>
+    {{formset}}
+    </table>
+</form>
+
+<div class='line'></div>
+{# <table>
+    <tr id="col_names">
+        <th> Player </th>
+        <th> Character </th>
+        <th> Team </th>
+        <th> KOs </th>
+        <th> Falls </th>
+        <th> Winner </th>
+    </tr>
+    <tr class="results">
+        <td class="player"> a </td>
+        <td class="char"> a </td>
+        <td class="team">a </td>
+        <td class="ko">a  </td>
+        <td class="falls"> a </td>
+        <td class="winner"> <div class="win"></div></td>
+    </tr>
+
+</table> #}
+<div class="line"></div>
+
+{%  endblock %}
+
+
+{% block javascript %}
+<script type='text/javascript'>
+
+</script>
+{% endblock %}

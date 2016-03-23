@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.db.models import Sum, Max, Min, Count
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
+from django.forms import formset_factory
 
 from .models import MatchEntry, Tournament, Match, Player
-from .forms import SignupForm
+from .forms import SignupForm, DataEntryForm
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -91,3 +92,12 @@ class SignupView(FormView):
     def get_success_url(self):
         return reverse('profile/',args=(self.object.id,))
 
+class DataEntryView(FormView):
+    model = MatchEntry
+    form_class = DataEntryForm
+    template_name = 'tournaments/tournament_entry.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DataEntryView, self).get_context_data(**kwargs)
+        context['formset'] = formset_factory(DataEntryForm, extra=4, max_num=8)
+        return context

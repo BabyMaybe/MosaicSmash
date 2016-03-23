@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^tournaments/', views.TournamentsView.as_view()),
     url(r'^profile/(?P<pk>[0-9]+)', views.ProfileView.as_view()),
     url(r'^leaderboard', views.LeaderboardView.as_view()),
-    url(r'^signup', views.SignupView.as_view())
+    url(r'^signup', views.SignupView.as_view()),
+    url(r'^data_entry', views.DataEntryView.as_view()),
 ]
