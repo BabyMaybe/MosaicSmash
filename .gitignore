@@ -112,6 +112,5 @@ Thumbs.db
 #Django specific #
 ##################
 settings_local.py
-/media/*
 smashenv/*
 smashenv

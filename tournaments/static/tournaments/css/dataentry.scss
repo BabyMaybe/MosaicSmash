@@ -1,0 +1,7 @@
+@import 'base';
+
+.background-image {
+    background-image: url('media/bg_imgs/bg12.jpg');
+    background-position-y: 0%;
+    @include blur(0);
+}
