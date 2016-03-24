@@ -21,4 +21,5 @@ class DataEntryForm(ModelForm):
     class Meta:
         model = MatchEntry
         fields = '__all__'
+        exclude = ['match']
 

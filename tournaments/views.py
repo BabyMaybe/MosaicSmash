@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Sum, Max, Min, Count
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormView
 from django.forms import formset_factory
+from django.http import HttpResponse
 
 from .models import MatchEntry, Tournament, Match, Player
 from .forms import SignupForm, DataEntryForm
@@ -92,12 +93,62 @@ class SignupView(FormView):
     def get_success_url(self):
         return reverse('profile/',args=(self.object.id,))
 
-class DataEntryView(FormView):
+class DataEntryView(CreateView):
     model = MatchEntry
     form_class = DataEntryForm
     template_name = 'tournaments/tournament_entry.html'
 
     def get_context_data(self, **kwargs):
         context = super(DataEntryView, self).get_context_data(**kwargs)
-        context['formset'] = formset_factory(DataEntryForm, extra=4, max_num=8)
+        EntryFormSet = formset_factory(DataEntryForm, extra=4, max_num=8)
+        context['formset'] = EntryFormSet(initial = [{'form-0-character': ['2'],
+                                                     'form-3-character': ['3'],
+                                                     'form-2-team': ['3'],
+                                                     'form-2-kos': ['4'],
+                                                     'form-3-team': ['2'],
+                                                     'form-2-character': ['1'],
+                                                     'form-1-falls': ['2'],
+                                                     'form-3-player': ['5'],
+                                                     'form-1-player': ['3'],
+                                                     'form-0-winner': ['on'],
+                                                     'form-0-kos': ['3'],
+                                                     'form-1-character': ['2'],
+                                                     'form-3-kos': ['3'],
+                                                     'form-0-falls': ['1'],
+                                                     'form-0-team': ['1'],
+                                                     'form-0-player': ['1'],
+                                                     'form-2-falls': ['3'],
+                                                     'form-2-player': ['2'],
+                                                     'csrfmiddlewaretoken': ['rdxByz68CZGl2DkuNNBR9cH7EGFwdnIa'],
+                                                     'form-1-kos': ['03'],
+                                                     'form-3-falls': ['20'],
+                                                     'form-1-team': ['1']}])
+
+        # for form in context['formset']:
+        #     print (form.as_table())
         return context
+
+    def form_valid(self, form):
+        print("form_valid")
+        context = self.get_context_data();
+        print(context)
+        return super(DataEntryView, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+
+        print(request.POST)
+        EntryFormSet = formset_factory(DataEntryForm, extra=4, max_num=8)
+        entries = EntryFormSet(request.POST)
+        truthiness = entries.is_valid()
+        print(truthiness)
+        # for form in entries:
+        #     print (form.as_table())
+        # print(kwargs)
+        return HttpResponse('this is a response?')
+    #     print("something posted")
+    #     self.object = None
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+
+    #     if (form.is_valid(form, ))
+    #     return self.form_valid(form)
