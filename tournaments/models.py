@@ -19,10 +19,10 @@ class Player(models.Model):
     user = models.OneToOneField(User)
     icon = models.ImageField(upload_to='player_icons', null=True, blank=True)
     nickname = models.CharField(max_length=200)
-    kos = models.IntegerField(default=0)
-    falls = models.IntegerField(default=0)
-    wins = models.IntegerField(default=0)
-    losses = models.IntegerField(default=0)
+    kos = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    falls = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    wins = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    losses = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
     def save(self, *args, **kwargs):
         if MatchEntry.objects.filter(player=self):
@@ -171,8 +171,8 @@ class MatchEntry(models.Model):
     player = models.ForeignKey(Player)
     character = models.ForeignKey(Character)
     team = models.IntegerField(choices=TEAM_CHOICES, default=SOLO)
-    kos = models.IntegerField(default=0)
-    falls = models.IntegerField(default=0)
+    kos = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    falls = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     winner = models.BooleanField(default=False)
 
 
