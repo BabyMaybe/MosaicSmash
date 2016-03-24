@@ -112,4 +112,54 @@ a {
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
 
+table select {
+  background: url("media/smash-ball-small.png") no-repeat right center;
+  background-color: #002745;
+  border-width: 2px;
+  border-radius: 20px;
+  border-color: #FFF8E0;
+  padding-left: 16px;
+  padding-right: 45px;
+  margin: 5px;
+  height: 40px;
+  font-family: "Contrail One";
+  font-size: .8em;
+  color: white;
+  -webkit-appearance: none; }
+table input {
+  height: 30px;
+  width: 30px;
+  background-color: #002745;
+  border: #FFF8E0 dashed 4px;
+  color: white;
+  font-family: "Contrail One";
+  font-size: .8em;
+  text-align: center;
+  padding-top: 2px; }
+  table input[type=checkbox] {
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    margin: 15px;
+    vertical-align: middle;
+    -webkit-appearance: none; }
+    table input[type=checkbox]:checked {
+      border: none;
+      background: url("media/smash-ball-small.png") no-repeat center center; }
+table .submit_button {
+  width: 250px;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 2px;
+  -webkit-appearance: none; }
+
+::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
+
+::-webkit-outer-spin-button {
+  -webkit-appearance: none; }
+
+input[type=number] {
+  -moz-appearance: textfield; }
+
 /*# sourceMappingURL=dataentry.css.map */

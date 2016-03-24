@@ -23,16 +23,12 @@
         </span>
     </h2>
 </header>
-
+<div class='line'> </div>
 <form method="post" action="">
+    {{ formset.management_form }}
+    {% csrf_token %}
     <table>
-    {{formset}}
-    </table>
-</form>
-
-<div class='line'></div>
-{# <table>
-    <tr id="col_names">
+            <tr id="col_names">
         <th> Player </th>
         <th> Character </th>
         <th> Team </th>
@@ -40,17 +36,26 @@
         <th> Falls </th>
         <th> Winner </th>
     </tr>
-    <tr class="results">
-        <td class="player"> a </td>
-        <td class="char"> a </td>
-        <td class="team">a </td>
-        <td class="ko">a  </td>
-        <td class="falls"> a </td>
-        <td class="winner"> <div class="win"></div></td>
-    </tr>
+        {% for form in formset %}
+        <tr>
+        {% for field in form %}
+            <td>
+                {{ field }}
+            </td>
+        {% endfor %}
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan='6'>
+                <input type="submit" value="Enter Match Data" class="submit_button" />
+            </td>
+        </tr>
+    </table>
 
-</table> #}
-<div class="line"></div>
+</form>
+
+<div class='line'></div>
+
 
 {%  endblock %}
 

@@ -5,3 +5,62 @@
     background-position-y: 0%;
     @include blur(0);
 }
+
+
+table {
+
+    select {
+        background: url('media/smash-ball-small.png') no-repeat right center;
+        background-color: $MBlue;
+        border-width: 2px;
+        border-radius: 20px;
+        border-color: #FFF8E0;
+        padding-left: 16px;
+        padding-right: 45px;
+        margin: 5px;
+        height: 40px;
+        font-family: $TableFont;
+        font-size: .8em;
+        color: white;
+        -webkit-appearance: none;
+        }
+
+        input {
+            height: 30px;
+            width: 30px;
+            background-color: $MBlue;
+            border: #FFF8E0 dashed 4px;
+            color: white;
+            font-family: $TableFont;
+            font-size: .8em;
+            text-align: center;
+            padding-top: 2px;
+
+        &[type=checkbox] {
+                background-color: transparent;
+                height: 30px;
+                width: 30px;
+                margin: 15px;
+                vertical-align: middle;
+                -webkit-appearance: none;
+
+                &:checked {
+                    border: none;
+                    background: url('media/smash-ball-small.png') no-repeat center center;
+                }
+            }
+
+        }
+
+    .submit_button {
+        width: 250px;
+        border-style: solid;
+        border-radius: 20px;
+        border-width: 2px;
+        -webkit-appearance: none;
+    }
+}
+::-webkit-inner-spin-button { -webkit-appearance: none;}
+::-webkit-outer-spin-button { -webkit-appearance: none;}
+input[type=number] {-moz-appearance: textfield;}
+
