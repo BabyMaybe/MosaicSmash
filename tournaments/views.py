@@ -23,7 +23,7 @@ class MatchesView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MatchesView, self).get_context_data(**kwargs)
-        context['matches'] = Match.objects.filter(tournament=self.get_object())
+        context['matches'] = Match.objects.filter(tournament=self.get_object()).order_by('date_played')
         return context
 
 
