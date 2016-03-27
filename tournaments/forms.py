@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.forms import PasswordInput, DateInput, NumberInput, HiddenInput, TextInput
 from django.contrib.auth.models import User
 
-from .models import MatchEntry
+from .models import MatchEntry, Match
 
 class SignupForm(ModelForm):
     class Meta:
@@ -16,6 +16,13 @@ class SignupForm(ModelForm):
         widgets = {
             'password' : PasswordInput(),
         }
+
+class MatchForm(forms.ModelForm):
+    class Meta:
+        model = Match
+        fields = ('tournament', 'stage', 'teams', 'items', 'match_type', 'time_length')
+        # exclude = ('date_played','winner')
+
 
 class DataEntryForm(ModelForm):
     class Meta:

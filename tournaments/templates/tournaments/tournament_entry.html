@@ -27,20 +27,42 @@
 <form method="post" action="">
     {{ formset.management_form }}
     {% csrf_token %}
+    <table class="match_form">
+        <tr id='entry_col_names' class='entry_row'>
+            <th> Tournament </th>
+            <th> Stage </th>
+            <th> Teams </th>
+            <th> Items </th>
+            <th> Match Type </th>
+            <th> Rules </th>
+        </tr>
+        <tr class='entry_row'>
+            {% for field in  match %}
+            <td>
+                {{ field }}
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div class='line'></div>
+    <div class='white_line'></div>
+    <div class='line'></div>
+
     <table>
-            <tr id="col_names">
-        <th> Player </th>
-        <th> Character </th>
-        <th> Team </th>
-        <th> KOs </th>
-        <th> Falls </th>
-        <th> Winner </th>
-    </tr>
+        <tr id="col_names">
+            <th> Player </th>
+            <th> Character </th>
+            <th> Team </th>
+            <th> KOs </th>
+            <th> Falls </th>
+            <th> Winner </th>
+        </tr>
         {% for form in formset %}
         <tr>
         {% for field in form %}
             <td>
-                {{ field }}
+               {{ field }}
             </td>
         {% endfor %}
         </tr>

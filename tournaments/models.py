@@ -25,6 +25,7 @@ class Player(models.Model):
     wins = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     losses = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
+
     def save(self, *args, **kwargs):
         if MatchEntry.objects.filter(player=self):
             self.update()

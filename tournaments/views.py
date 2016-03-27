@@ -3,13 +3,15 @@ from django.db.models import Sum, Max, Min, Count
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormView
 from django.forms import modelformset_factory
+from django.forms.models import inlineformset_factory
 from django.http import HttpResponse
 
 from .models import MatchEntry, Tournament, Match, Player
-from .forms import SignupForm, DataEntryForm
+from .forms import SignupForm, DataEntryForm, MatchForm
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import render, redirect
 # Create your views here.
 class TournamentsView(ListView):
@@ -94,32 +96,42 @@ class SignupView(FormView):
         return reverse('profile/',args=(self.object.id,))
 
 
-class DataEntryView(CreateView):
+
+# EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm, extra=4, max_num=8)
+EntryFormSet = inlineformset_factory(Match, MatchEntry, can_delete=False, extra=4, max_num=8, form=DataEntryForm)
+
+
+class DataEntryView(UserPassesTestMixin, CreateView):
     model = MatchEntry
     form_class = DataEntryForm
     template_name = 'tournaments/tournament_entry.html'
+    login_url = '/tournaments/' #no way to login except through admin pannel rn so send back to list
+    redirect_unauthenticated_users = True
+
+    def test_func(self):
+        return self.request.user.is_staff
 
     def get_context_data(self, **kwargs):
         context = super(DataEntryView, self).get_context_data(**kwargs)
-        EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm,
-                                            extra=4, max_num=8)
         context['formset'] = EntryFormSet(queryset=MatchEntry.objects.filter(kos__lt=0))
+        context['match'] = MatchForm()
 
         return context
 
-
     def post(self, request, *args, **kwargs):
 
-        EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm,
-                                            extra=4, max_num=8)
-        entries = EntryFormSet(request.POST)
+        form = MatchForm(request.POST)
 
-        for entry in entries:
-            if entry.is_valid():
+        if form.is_valid():
+            match = form.save()
 
-                data_point = entry.save(commit=False)
-                data_point.match_id = 9 #update this to autofill with current Match id
-                data_point.save()
-                data_point.player.save()
+            entries = EntryFormSet(request.POST, instance=match)
 
-        return redirect('/data_entry')
+            for entry in entries:
+                if entry.is_valid():
+                    data_point = entry.save(commit=False)
+                    data_point.match = match
+                    data_point.save()
+                    data_point.player.save()
+
+        return redirect('/tournaments/%s' % match.tournament.pk)

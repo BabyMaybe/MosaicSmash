@@ -74,9 +74,15 @@
     </tr>
 {% endfor %}
 
-        <tr>
-            <td></td>
-        </tr>
+{% if user.is_staff %}
+    <tr>
+        <td colspan='8' class='match_button_container'>
+            <div class='new_match_button'>
+                <a href='/data_entry' >Add New Match</a>
+            </div>
+        </td>
+    </tr>
+{% endif %}
 
 </table>
 <div class='line'></div>

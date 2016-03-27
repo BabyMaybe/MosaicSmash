@@ -52,6 +52,10 @@ table {
 
         }
 
+        tr{
+            cursor: auto;
+          }
+
     .submit_button {
         width: 250px;
         border-style: solid;
@@ -60,6 +64,13 @@ table {
         -webkit-appearance: none;
     }
 }
+
+#entry_col_names {
+    cursor: auto;
+    color: white;
+}
+
+
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
 ::-webkit-outer-spin-button { -webkit-appearance: none;}
 input[type=number] {-moz-appearance: textfield;}

@@ -79,11 +79,14 @@ table {
     cursor: auto;
     color: white; }
 
-.line {
+.line, .white_line {
   height: 8px;
   width: 100%;
   background-color: #002745;
   margin: 0 auto; }
+
+.white_line {
+  background-color: white; }
 
 a {
   text-decoration: none;
@@ -146,12 +149,18 @@ table input {
     table input[type=checkbox]:checked {
       border: none;
       background: url("media/smash-ball-small.png") no-repeat center center; }
+table tr {
+  cursor: auto; }
 table .submit_button {
   width: 250px;
   border-style: solid;
   border-radius: 20px;
   border-width: 2px;
   -webkit-appearance: none; }
+
+#entry_col_names {
+  cursor: auto;
+  color: white; }
 
 ::-webkit-inner-spin-button {
   -webkit-appearance: none; }

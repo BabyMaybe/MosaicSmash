@@ -81,6 +81,8 @@ table {
         padding-top: 10px;
         border-bottom: 7px solid white;
 
+
+
         }
 
     tr {
@@ -89,18 +91,22 @@ table {
             color: $MBlue;
         }
        }
+        #col_names {
+            cursor: auto;
+            color: white;
+        }
 
-    #col_names {
-        cursor: auto;
-        color: white;
-    }
 }
 
-.line {
+.line, .white_line {
     height: 8px;
     width: 100%;
     background-color: $MBlue;
     margin: 0 auto;
+}
+
+.white_line {
+    background-color: white;
 }
 
 a {

@@ -79,11 +79,14 @@ table {
     cursor: auto;
     color: white; }
 
-.line {
+.line, .white_line {
   height: 8px;
   width: 100%;
   background-color: #002745;
   margin: 0 auto; }
+
+.white_line {
+  background-color: white; }
 
 a {
   text-decoration: none;
