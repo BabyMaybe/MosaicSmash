@@ -23,3 +23,10 @@ class DataEntryForm(ModelForm):
         fields = '__all__'
         exclude = ['match']
 
+    def __init__(self, *args, **kwargs):
+        super(DataEntryForm, self).__init__(*args, **kwargs)
+        self.empty_permitted = False
+
+
+    #def clean_kos(self):
+        #custom validation of ko field

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Sum, Max, Min, Count
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormView
-from django.forms import formset_factory
+from django.forms import modelformset_factory
 from django.http import HttpResponse
 
 from .models import MatchEntry, Tournament, Match, Player
@@ -93,6 +93,7 @@ class SignupView(FormView):
     def get_success_url(self):
         return reverse('profile/',args=(self.object.id,))
 
+
 class DataEntryView(CreateView):
     model = MatchEntry
     form_class = DataEntryForm
@@ -100,49 +101,52 @@ class DataEntryView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(DataEntryView, self).get_context_data(**kwargs)
-        EntryFormSet = formset_factory(DataEntryForm, extra=4, max_num=8)
-        context['formset'] = EntryFormSet(initial = [{'form-0-character': ['2'],
-                                                     'form-3-character': ['3'],
-                                                     'form-2-team': ['3'],
-                                                     'form-2-kos': ['4'],
-                                                     'form-3-team': ['2'],
-                                                     'form-2-character': ['1'],
-                                                     'form-1-falls': ['2'],
-                                                     'form-3-player': ['5'],
-                                                     'form-1-player': ['3'],
-                                                     'form-0-winner': ['on'],
-                                                     'form-0-kos': ['3'],
-                                                     'form-1-character': ['2'],
-                                                     'form-3-kos': ['3'],
-                                                     'form-0-falls': ['1'],
-                                                     'form-0-team': ['1'],
-                                                     'form-0-player': ['1'],
-                                                     'form-2-falls': ['3'],
-                                                     'form-2-player': ['2'],
-                                                     'csrfmiddlewaretoken': ['rdxByz68CZGl2DkuNNBR9cH7EGFwdnIa'],
-                                                     'form-1-kos': ['03'],
-                                                     'form-3-falls': ['20'],
-                                                     'form-1-team': ['1']}])
+        EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm,
+                                            extra=4, max_num=8)
+        context['formset'] = EntryFormSet(queryset=MatchEntry.objects.filter(kos__lt=0))
 
         # for form in context['formset']:
         #     print (form.as_table())
+        # print(context['formset'])
         return context
 
     def form_valid(self, form):
         print("form_valid")
         context = self.get_context_data();
-        print(context)
+        # print(context)
         return super(DataEntryView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
 
-        print(request.POST)
-        EntryFormSet = formset_factory(DataEntryForm, extra=4, max_num=8)
-        entries = EntryFormSet(request.POST)
-        truthiness = entries.is_valid()
-        print(truthiness)
+        # print(request.POST)
+        EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm,
+                                            extra=4, max_num=8)
+        entries = EntryFormSet(request.POST, initial=[{'match': 9}])
+        # truthiness = entries.is_valid()
+        # print(truthiness)
+        # print(entries)
+        # entries.save()
+        for entry in entries:
+            if entry.is_valid():
+                print("found valid entry")
+                dataPoint = entry.save(commit=False)
+                dataPoint.match_id = 9
+                dataPoint.save()
+
+
+        # print ("entries type:",type( entries))
+        # print ("EntryFormSet type:", type( EntryFormSet))
+        # print(entries.total_form_count())
         # for form in entries:
-        #     print (form.as_table())
+        #       # if form.is_valid():
+        #       #   self.object = form.save()
+        #     print("#################################")
+        #     print ("THIS IS THE START OF A NEW FORM")
+        #     for field in form:
+        #         print("##########THIS IS A NEW FIELD############")
+        #         print(field)
+        #     print("THIS IS THE END OF A FORM")
+        #     print("############################")
         # print(kwargs)
         return HttpResponse('this is a response?')
     #     print("something posted")
