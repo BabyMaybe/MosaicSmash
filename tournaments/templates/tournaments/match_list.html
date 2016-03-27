@@ -60,8 +60,8 @@
 	    {{ match.time_length }}
             {% if match.match_type == "Time" %}
                 Minutes
-	    {% else %}
-		Lives
+	        {% else %}
+		        Lives
             {% endif %}
         </td>
         <td class='winner'>
@@ -69,6 +69,11 @@
         </td>
     </tr>
 {% endfor %}
+
+        <tr>
+            <td></td>
+        </tr>
+
 </table>
 <div class='line'></div>
 

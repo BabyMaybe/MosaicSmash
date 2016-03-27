@@ -105,54 +105,21 @@ class DataEntryView(CreateView):
                                             extra=4, max_num=8)
         context['formset'] = EntryFormSet(queryset=MatchEntry.objects.filter(kos__lt=0))
 
-        # for form in context['formset']:
-        #     print (form.as_table())
-        # print(context['formset'])
         return context
 
-    def form_valid(self, form):
-        print("form_valid")
-        context = self.get_context_data();
-        # print(context)
-        return super(DataEntryView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
 
-        # print(request.POST)
         EntryFormSet = modelformset_factory(MatchEntry, form=DataEntryForm,
                                             extra=4, max_num=8)
-        entries = EntryFormSet(request.POST, initial=[{'match': 9}])
-        # truthiness = entries.is_valid()
-        # print(truthiness)
-        # print(entries)
-        # entries.save()
+        entries = EntryFormSet(request.POST)
+
         for entry in entries:
             if entry.is_valid():
-                print("found valid entry")
-                dataPoint = entry.save(commit=False)
-                dataPoint.match_id = 9
-                dataPoint.save()
 
+                data_point = entry.save(commit=False)
+                data_point.match_id = 9 #update this to autofill with current Match id
+                data_point.save()
+                data_point.player.save()
 
-        # print ("entries type:",type( entries))
-        # print ("EntryFormSet type:", type( EntryFormSet))
-        # print(entries.total_form_count())
-        # for form in entries:
-        #       # if form.is_valid():
-        #       #   self.object = form.save()
-        #     print("#################################")
-        #     print ("THIS IS THE START OF A NEW FORM")
-        #     for field in form:
-        #         print("##########THIS IS A NEW FIELD############")
-        #         print(field)
-        #     print("THIS IS THE END OF A FORM")
-        #     print("############################")
-        # print(kwargs)
-        return HttpResponse('this is a response?')
-    #     print("something posted")
-    #     self.object = None
-    #     form_class = self.get_form_class()
-    #     form = self.get_form(form_class)
-
-    #     if (form.is_valid(form, ))
-    #     return self.form_valid(form)
+        return redirect('/data_entry')

@@ -27,11 +27,20 @@ class Player(models.Model):
 
     def save(self, *args, **kwargs):
         if MatchEntry.objects.filter(player=self):
-            self.kos = MatchEntry.objects.filter(player=self).aggregate(kos=Sum('kos'))['kos']
-            self.falls = MatchEntry.objects.filter(player=self).aggregate(falls=Sum('falls'))['falls']
-            self.wins = MatchEntry.objects.filter(player=self).filter(winner=True).count()
-            self.losses = MatchEntry.objects.filter(player=self).filter(winner=False).count()
+            self.update()
         super(Player, self).save(*args, **kwargs)
+
+    def update(self):
+        print("updating stats on player: ", self.nickname)
+        player_matches = MatchEntry.objects.filter(player__id=self.pk)
+        print("player matches:", player_matches.count())
+
+        print ("kos",player_matches.aggregate(kos=Sum('kos'))['kos'])
+
+        self.kos = player_matches.aggregate(kos=Sum('kos'))['kos']
+        self.falls = player_matches.aggregate(falls=Sum('falls'))['falls']
+        self.wins = player_matches.filter(winner=True).count()
+        self.losses = player_matches.filter(winner=False).count()
 
 
 
