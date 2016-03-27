@@ -92,8 +92,14 @@ class Match(models.Model):
         (TIME, "Time Match"),
         (COIN, "Coin Match"),
         )
-#Choices for stages
 
+    ITEM_CHOICES = (
+        ("None", "None"),
+        ("Low", "Low"),
+        ("Medium", "Medium"),
+        ("High", "High"))
+
+    #Choices for stages
     STAGE_CHOICES = (
         ('75m', '75m'),
         ('Battlefield', 'Battlefield'),
@@ -148,6 +154,7 @@ class Match(models.Model):
     teams = models.BooleanField(default=False)
     match_type = models.CharField(max_length=100, choices=MATCH_TYPE, default=STOCK)
     time_length = models.IntegerField(default=3)
+    items = models.CharField(max_length=200, choices=ITEM_CHOICES, default="None")
     stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default="Final Destination")
     winner = models.ForeignKey(Player, null=True, blank=True)
 

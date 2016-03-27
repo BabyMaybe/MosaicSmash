@@ -31,6 +31,7 @@
         <th> Date Played </th>
         <th> Stage </th>
         <th> Teams </th>
+        <th> Items </th>
         <th> Match Type </th>
         <th> Rules </th>
         <th> Winner </th>
@@ -52,6 +53,9 @@
 	    {% else %}
 		✘
 	    {% endif %}
+        </td>
+        <td class='items'>
+            {{ match.items }}
         </td>
         <td class='type'>
             {{ match.match_type }}
