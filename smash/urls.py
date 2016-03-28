@@ -21,11 +21,11 @@ from tournaments import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.TournamentsView.as_view()),
-    url(r'^results/(?P<pk>[0-9]+)', views.ResultsView.as_view()),
-    url(r'^tournaments/(?P<pk>[0-9]+)', views.MatchesView.as_view()),
+    url(r'^results/(?P<pk>[0-9]+)/', views.ResultsView.as_view()),
+    url(r'^tournaments/(?P<pk>[0-9]+)/', views.MatchesView.as_view()),
     url(r'^tournaments/', views.TournamentsView.as_view()),
-    url(r'^profile/(?P<pk>[0-9]+)', views.ProfileView.as_view()),
-    url(r'^leaderboard', views.LeaderboardView.as_view()),
-    url(r'^signup', views.SignupView.as_view()),
-    url(r'^data_entry', views.DataEntryView.as_view()),
+    url(r'^profile/(?P<pk>[0-9]+)/', views.ProfileView.as_view()),
+    url(r'^leaderboard/', views.LeaderboardView.as_view()),
+    url(r'^signup/', views.SignupView.as_view()),
+    url(r'^data_entry/', views.DataEntryView.as_view()),
 ]

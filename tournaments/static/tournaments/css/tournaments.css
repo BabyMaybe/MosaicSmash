@@ -20,6 +20,34 @@ body {
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
 
+nav {
+  width: 100%;
+  height: 75px;
+  background-color: #D95A24; }
+  nav ul {
+    padding: 0;
+    display: table;
+    margin: 0 auto;
+    border: #002745 9px solid;
+    border-top: 0;
+    position: relative;
+    background-color: #D95A24; }
+    nav ul li {
+      color: white;
+      float: left;
+      padding-top: 20px;
+      padding-bottom: 25px; }
+      nav ul li a {
+        color: white;
+        font-family: "Contrail One"; }
+        nav ul li a:hover {
+          color: #002745; }
+
+.side-header {
+  color: #666;
+  font-size: .5em;
+  margin: 40px; }
+
 h1, h2 {
   font-family: "Black Ops One";
   font-size: 6em;
@@ -38,13 +66,12 @@ ul {
   list-style-type: none; }
 
 li {
-  display: inline;
   background-color: #D95A24;
   font-family: "Oswald";
   font-size: 1.5em;
   color: white;
   padding: 20px;
-  margin: 20px; }
+  margin: 0 auto; }
 
 table {
   background-color: #D95A24;
@@ -67,12 +94,37 @@ table {
     padding-bottom: 10px;
     padding-top: 10px;
     border-bottom: 7px solid white; }
+  table tr {
+    cursor: pointer; }
+    table tr:hover {
+      color: #002745; }
+  table #col_names {
+    cursor: auto;
+    color: white; }
 
-.line {
+.line, .white_line {
   height: 8px;
   width: 100%;
   background-color: #002745;
   margin: 0 auto; }
+
+.white_line {
+  background-color: white; }
+
+a {
+  text-decoration: none;
+  color: #666; }
+  a:hover {
+    color: #D95A24; }
+
+.signup {
+  display: block;
+  font-family: "Black Ops One";
+  font-size: 2em;
+  color: #002745;
+  text-align: center; }
+  .signup:hover {
+    color: #D95A24; }
 
 .background-image {
   background-image: url("media/bg_imgs/bg2.jpg");
