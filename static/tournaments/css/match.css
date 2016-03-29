@@ -20,6 +20,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
 
+.side-header {
+  color: #666;
+  font-size: .5em;
+  margin: 40px; }
+
 h1, h2 {
   font-family: "Black Ops One";
   font-size: 6em;
@@ -38,13 +43,12 @@ ul {
   list-style-type: none; }
 
 li {
-  display: inline;
   background-color: #D95A24;
   font-family: "Oswald";
   font-size: 1.5em;
   color: white;
   padding: 20px;
-  margin: 20px; }
+  margin: 0 auto; }
 
 table {
   background-color: #D95A24;
@@ -67,12 +71,37 @@ table {
     padding-bottom: 10px;
     padding-top: 10px;
     border-bottom: 7px solid white; }
+  table tr {
+    cursor: pointer; }
+    table tr:hover {
+      color: #002745; }
+  table #col_names {
+    cursor: auto;
+    color: white; }
 
-.line {
+.line, .white_line {
   height: 8px;
   width: 100%;
   background-color: #002745;
   margin: 0 auto; }
+
+.white_line {
+  background-color: white; }
+
+a {
+  text-decoration: none;
+  color: #666; }
+  a:hover {
+    color: #D95A24; }
+
+.signup {
+  display: block;
+  font-family: "Black Ops One";
+  font-size: 2em;
+  color: #002745;
+  text-align: center; }
+  .signup:hover {
+    color: #D95A24; }
 
 .background-image {
   background-image: url("media/bg_imgs/bg4.jpg");
@@ -85,5 +114,20 @@ table {
   /* Firefox, Safari, Chrome*/
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius);
   /* IE9 */ }
+
+.new_match_button {
+  border: 3px white solid;
+  background-color: #002745;
+  color: white;
+  border-radius: 30px;
+  margin: 0 auto;
+  width: 250px; }
+  .new_match_button a {
+    color: white; }
+    .new_match_button a:hover {
+      color: #D95A24; }
+
+.match_button_container {
+  padding: 10px; }
 
 /*# sourceMappingURL=match.css.map */

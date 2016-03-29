@@ -5,3 +5,28 @@
     background-position-y: 47%;
     @include blur(7);
 }
+
+.new_match_button {
+    border: 3px white solid;
+    background-color: $MBlue;
+    color: white;
+    border-radius: 30px;
+    margin: 0 auto;
+    width: 250px;
+
+    a {
+        color: white;
+
+        &:hover {
+            color: $MOrange;
+        }
+    }
+
+    &:hover {
+        // background-color: $MOrange
+    }
+}
+
+.match_button_container {
+    padding: 10px;
+}
