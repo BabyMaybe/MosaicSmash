@@ -9,7 +9,7 @@ class CharacterAdmin(admin.ModelAdmin):
     list_display = ['name', 'icon']
 
 class MatchEntryAdmin(admin.ModelAdmin):
-    list_display = ['player', 'character', 'team', 'kos', 'falls', 'winner']
+    list_display = ['player', 'character', 'team', 'kos', 'falls', 'winner', 'date_created']
 
 class MatchAdmin(admin.ModelAdmin):
     list_display = ['tournament', 'name', 'stage','teams', 'match_type', 'winner','date_played']

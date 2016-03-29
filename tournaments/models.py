@@ -162,9 +162,9 @@ class Match(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             round = 'Round '
-            round_no = self.tournament.match_set.count()
+            round_no = self.tournament.match_set.count() + 1
             print (round_no)
-            self.name = round + str(round_no)
+            self.name = round + str(round_no) + ' - ' + self.tournament.name
         super(Match, self).save(*args, **kwargs)
 
 class MatchEntry(models.Model):
@@ -192,6 +192,7 @@ class MatchEntry(models.Model):
     kos = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     falls = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     winner = models.BooleanField(default=False)
+    date_created = models.DateTimeField(default=timezone.now)
 
 
 

@@ -35,7 +35,7 @@ class ResultsView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ResultsView, self).get_context_data(**kwargs)
-        context['results'] = MatchEntry.objects.filter(match=self.get_object())
+        context['results'] = MatchEntry.objects.filter(match=self.get_object()).order_by('-kos')
         return context
 
 class ProfileView(DetailView):
@@ -113,17 +113,20 @@ class DataEntryView(UserPassesTestMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(DataEntryView, self).get_context_data(**kwargs)
-        context['formset'] = EntryFormSet(queryset=MatchEntry.objects.filter(kos__lt=0))
+        context['formset'] = EntryFormSet(queryset=MatchEntry.objects.filter(kos__lt=0), initial=[{'kos': None, 'falls': None} for x in range(4)])
         context['match'] = MatchForm()
-
+        context['tournament_pk'] = self.kwargs['pk']
         return context
 
     def post(self, request, *args, **kwargs):
-
+        print(args)
+        print( kwargs)
         form = MatchForm(request.POST)
 
         if form.is_valid():
-            match = form.save()
+            match = form.save(commit=False)
+            match.tournament = Tournament.objects.get(pk=kwargs['pk'])
+            match.save()
 
             entries = EntryFormSet(request.POST, instance=match)
 
@@ -134,4 +137,6 @@ class DataEntryView(UserPassesTestMixin, CreateView):
                     data_point.save()
                     data_point.player.save()
 
-        return redirect('/tournaments/%s' % match.tournament.pk)
+            return redirect('/tournaments/%s' % match.tournament.pk)
+
+        return redirect('/tournaments/%s/data_entry' % kwargs['pk'])

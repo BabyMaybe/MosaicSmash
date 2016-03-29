@@ -29,7 +29,7 @@
         <th> Winner </th>
     </tr>
 {% for tournament in tournament_list %}
-    <tr class='clickable-row'  data-href='/tournaments/{{ tournament.pk }}'>
+    <tr class='clickable-row'  data-href='/tournaments/{{ tournament.pk }}/'>
         <td class='tournament'>
             {{ tournament.name }}
         </td>
@@ -60,6 +60,7 @@
 {% block javascript %}
 <script type="text/javascript">
     $(".clickable-row").click(function() {
+        console.log($(this).data("href"));
     window.document.location = $(this).data("href");
     });
 </script>

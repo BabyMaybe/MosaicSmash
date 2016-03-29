@@ -20,15 +20,19 @@ class SignupForm(ModelForm):
 class MatchForm(forms.ModelForm):
     class Meta:
         model = Match
-        fields = ('tournament', 'stage', 'teams', 'items', 'match_type', 'time_length')
+        fields = ('stage', 'teams', 'items', 'match_type', 'time_length')
         # exclude = ('date_played','winner')
 
 
 class DataEntryForm(ModelForm):
     class Meta:
         model = MatchEntry
-        fields = '__all__'
-        exclude = ['match']
+        exclude = ['match', 'date_created']
+
+        widgets = {
+            'kos': forms.NumberInput(attrs={'placeholder' : '0'}),
+            'falls': forms.NumberInput(attrs={'placeholder' : '0'})
+        }
 
     def __init__(self, *args, **kwargs):
         super(DataEntryForm, self).__init__(*args, **kwargs)
