@@ -126,6 +126,9 @@ a {
   .signup:hover {
     color: #D95A24; }
 
+#tournaments_nav {
+  color: #002745; }
+
 .background-image {
   background-image: url("media/bg_imgs/bg2.jpg");
   background-position-y: 5%;

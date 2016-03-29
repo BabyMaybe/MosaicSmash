@@ -15,11 +15,11 @@
     </h1>
     <h2>
         <span class="side-header">
-            <a href="/tournaments"> {{ tournament.name }} </a>
+            <a href="/tournaments/"> {{ tournament.name }} </a>
         </span>
         Match Results
         <span class="side-header">
-            <a href="/tournaments"> {{ tournament.name }} </a>
+            <a href="/tournaments/"> {{ tournament.name }} </a>
         </span>
     </h2>
 </header>
@@ -38,7 +38,7 @@
         <th> Winner </th>
     </tr>
 {% for match in matches %}
-    <tr class='clickable-row'  data-href='/results/{{ match.pk }}'>
+    <tr class='clickable-row'  data-href='/results/{{ match.pk }}/'>
         <td class='tournament-round'>
             {{ match.name }}
         </td>
