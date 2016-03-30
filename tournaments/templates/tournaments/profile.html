@@ -14,24 +14,54 @@
         Mosaic Smash!
     </h1>
     <h2>
-        <span class="side-header"> {{ player.nickname }} </span>
+        <span class='side-header'> {{ player.nickname }} </span>
         Profile
-        <span class="side-header"> {{ player.nickname }} </span>
+        <span class='side-header'> {{ player.nickname }} </span>
     </h2>
 </header>
-<div class="line"></div>
+<div class='line'></div>
 
-<div class="profile-bg">
-    <ul>
-        <li> Total Wins: {{wins}} </li>
-        <li> Total Losses: {{losses}} </li>
-        <li> Total KOs: {{kos}} </li>
-        <li> Total Falls: {{falls}} </li>
-        <li> Tournaments Won: {{tournaments_won}} </li>
-        <li> Join Date: {{joined}} </li>
-        <li> Last Played: {{last_match}} </li>
-    </ul>
+<div class='profile-bg'>
+    <div id='pic-box'>
+        <div id='profile-pic'>
+            <img src="http://placehold.it/300x300">
+        </div>
+        <div id='char-box'>
+            <h3> Most Used Characters </h3>
+            {% for x in '123' %}
+            <img src="http://placehold.it/80x80" class='char-icon'>
+            {% endfor %}
+        </div>
+    </div>
+    <div id='profile-stats'>
+        <div id='stats-box'>
+            <div id='wins'>
+                <h3> Total Wins </h3>
+                <p> {{wins}} </p>
+                <h3> Total Losses: </h3>
+                <p> {{losses}} </p>
+                <h3> Tournaments Won: </h3>
+                <p> {{tournaments_won}} </p>
+            </div>
+            <div id='points'>
+                <h3> Total KOs: </h3>
+                <p> {{kos}} </p>
+                <h3> Total Falls: </h3>
+                <p> {{falls}} </p>
+                <h3> Total Points: </h3>
+                <p> {{ points }} </p>
+            </div>
+            <div id='date-info'>
+                <h3> Join Date: </h3>
+                <p>{{joined}} </p>
+                <h3> Last Played: </h3>
+                <p> {{last_match}} </p>
+            </div>
+            <div class='clearfix'></div>
+        </div>
+    </div>
 </div>
+
 
 {%  endblock %}
 

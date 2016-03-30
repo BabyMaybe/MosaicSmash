@@ -53,6 +53,7 @@ class ProfileView(DetailView):
         context['joined'] = self.get_object().user.date_joined
         matches = Match.objects.filter(matchentry__player=self.get_object())
         context['last_match'] = matches.aggregate(last=Max('date_played'))['last']
+        context['points'] = context['kos'] - context['falls']
         return context
 
 class LeaderboardView(ListView):
