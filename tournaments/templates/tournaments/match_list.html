@@ -31,6 +31,7 @@
         <th> Round </th>
         <th> Date Played </th>
         <th> Stage </th>
+        <th> Omega </th>
         <th> Teams </th>
         <th> Items </th>
         <th> Match Type </th>
@@ -48,12 +49,19 @@
         <td class='stage'>
             {{ match.stage }}
         </td>
+        <td>
+            {% if match.omega %}
+              ✓
+            {% else %}
+              ✘
+            {% endif %}
+        </td>
         <td class='teams'>
             {% if match.teams %}
-		✓
-	    {% else %}
-		✘
-	    {% endif %}
+		      ✓
+	        {% else %}
+		      ✘
+	        {% endif %}
         </td>
         <td class='items'>
             {{ match.items }}

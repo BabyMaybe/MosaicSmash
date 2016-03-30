@@ -20,7 +20,7 @@ class SignupForm(ModelForm):
 class MatchForm(forms.ModelForm):
     class Meta:
         model = Match
-        fields = ('stage', 'teams', 'items', 'match_type', 'time_length')
+        fields = ('stage', 'omega', 'teams', 'items', 'match_type', 'time_length')
         # exclude = ('date_played','winner')
 
 

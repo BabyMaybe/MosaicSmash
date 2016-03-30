@@ -157,6 +157,7 @@ class Match(models.Model):
     time_length = models.IntegerField(default=3)
     items = models.CharField(max_length=200, choices=ITEM_CHOICES, default="None")
     stage = models.CharField(max_length=100, choices=STAGE_CHOICES, default="Final Destination")
+    omega = models.BooleanField(default=False)
     winner = models.ForeignKey(Player, null=True, blank=True)
 
     def save(self, *args, **kwargs):
