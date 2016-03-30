@@ -1,5 +1,14 @@
 @import "base";
 
+h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+p {
+    font-size: 1em;
+}
+
 .background-image {
     background-image: url('media/bg_imgs/bg5.jpg');
     background-position-y: -20%;
@@ -9,4 +18,68 @@
 .profile-bg {
     background-color: $MOrange;
     font-family: $BodyFont;
+    padding-top: 50px;
+}
+
+#profile-pic {
+    border: 10px white solid;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+#pic-box {
+    // background-color: purple;
+    width: 300px;
+    // display: inline-block;
+    float: left;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.char-icon {
+    border: 5px solid white;
+    border-radius: 15px;
+}
+
+#profile-stats {
+    // background-color: green;
+}
+
+#stats-box {
+    // background-color: hotpink;
+    color: white;
+    // position: relative;
+    // left: 100px;
+}
+
+#wins {
+    // background-color: yellow;
+    float: left;
+    width:25%;
+    text-align: center;
+}
+
+#points {
+    // background-color: pink;
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+#date-info {
+    // background-color: red;
+    float: left;
+    width: 25%;
+    text-align: center;
+
+}
+
+#char-box {
+    margin: 0 auto;
+}
+
+.clearfix {
+    clear:both;
 }
