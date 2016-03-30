@@ -28,6 +28,7 @@
 
 <table>
     <tr id="col_names">
+        <th> Rank </th>
         <th> Player </th>
         <th> KOs </th>
         <th> Falls </th>
@@ -36,7 +37,8 @@
     </tr>
     {% for player in players %}
     <tr class="results">
-        <td class="player"> <a href="/profile/{{player.pk}}"> {{ player.nickname }} </a></td>
+        <td class="place">{{ forloop.counter }}</td>
+        <td class="player"><a href="/profile/{{player.pk}}"> {{ player.nickname }} </a></td>
         <td class="ko"> {{ player.kos }} </td>
         <td class="falls"> {{ player.falls }} </td>
         <td class="wins"> {{ player.wins }} </td>
