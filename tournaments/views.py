@@ -64,7 +64,7 @@ class LeaderboardView(ListView):
         context = super(LeaderboardView, self).get_context_data(**kwargs)
 
         #I'm kind of shaky on what this line does, but I do know that it works.
-        context['players'] = Player.objects.annotate(score=F('kos')-F('falls')).order_by('-score')
+        context['players'] = Player.objects.annotate(score=F('kos')-F('falls')).order_by('-score', '-kos')
         Player.objects.update()
         return context
 
