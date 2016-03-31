@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.db.models import Sum, Max, Min, Count
+from django.db.models import Sum, Max, Min, Count, F
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormView
 from django.forms import modelformset_factory
@@ -62,7 +62,9 @@ class LeaderboardView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(LeaderboardView, self).get_context_data(**kwargs)
-        context['players'] = Player.objects.order_by('-kos', 'falls')
+
+        #I'm kind of shaky on what this line does, but I do know that it works.
+        context['players'] = Player.objects.annotate(score=F('kos')-F('falls')).order_by('-score')
         Player.objects.update()
         return context
 

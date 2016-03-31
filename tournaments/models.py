@@ -43,6 +43,8 @@ class Player(models.Model):
         self.wins = player_matches.filter(winner=True).count()
         self.losses = player_matches.filter(winner=False).count()
 
+    def score(self):
+        return self.kos - self.falls
 
 
 class Character(models.Model):
@@ -167,6 +169,7 @@ class Match(models.Model):
             print (round_no)
             self.name = round + str(round_no) + ' - ' + self.tournament.name
         super(Match, self).save(*args, **kwargs)
+
 
 class MatchEntry(models.Model):
 
